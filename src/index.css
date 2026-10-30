@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  section[id] { scroll-margin-top: 88px; }
+  body { font-family: 'Inter', sans-serif; background: #090709; color: #fff; overflow-x: hidden; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  #root { width: 100%; min-height: 100svh; }
+}
+.site-nav { position: fixed; inset: 0 0 auto; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 22px clamp(22px, 5vw, 72px); background: rgba(38, 21, 30, .84); backdrop-filter: blur(14px); }
+.site-brand { display: inline-flex; align-items: center; gap: 9px; color: #fff; text-decoration: none; font-size: 17px; font-weight: 600; }
+.brand-mark { display: grid; place-items: center; width: 29px; height: 29px; border: 1px solid #fff8; border-radius: 50%; font-weight: 500; }
+.site-nav__links { position: absolute; left: 50%; transform: translateX(-50%); display: flex; gap: clamp(18px, 3vw, 40px); }
+.site-nav__links a, .hero-footer a { color: #fffc; text-decoration: none; font-size: 13px; transition: color .2s ease; }
+.site-nav__links a:hover, .hero-footer a:hover { color: #fff; }
+.nav-cta, .pill-button { display: inline-flex; align-items: center; gap: 16px; border-radius: 999px; color: #191116; background: #fff; text-decoration: none; font-weight: 600; }
+.nav-cta { padding: 12px 19px; font-size: 12px; }
+.product-hero { position: relative; width: 100%; min-height: 100svh; overflow: hidden; isolation: isolate; background: #33152b; }
+.product-hero__video, .product-hero__shade, .product-hero__glow { position: absolute; inset: 0; width: 100%; height: 100%; }
+.product-hero__video { object-fit: cover; z-index: -3; }
+.product-hero__shade { z-index: -2; background: linear-gradient(180deg, #160a1780 0%, #32102052 38%, #160a17a6 100%); }
+.product-hero__glow { z-index: -1; background: radial-gradient(ellipse at 50% 53%, #f07aa038 0%, transparent 55%); pointer-events: none; }
+.product-hero__content { min-height: 100svh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 110px 24px 130px; text-align: center; }
+.eyebrow { text-transform: uppercase; letter-spacing: .2em; font-size: 10px; font-weight: 500; }
+.hero-eyebrow { margin-bottom: 22px; color: #ffd9e8; }
+.product-hero h1 { color: #fff; text-shadow: 0 2px 40px #0006; font-size: clamp(3.2rem, 9vw, 7.4rem); font-weight: 700; line-height: .94; letter-spacing: -.075em; }
+.product-hero h1 span { display: block; }
+.product-hero h1 .hero-title-light { margin-top: 8px; color: #ffb9d1; font-weight: 300; }
+.product-hero__description { max-width: 440px; margin-top: 24px; color: #fffc; font-size: 14px; line-height: 1.75; }
+.pill-button { padding: 14px 19px 14px 24px; font-size: 12px; }
+.hero-button { margin-top: 30px; }
+.hero-footer { position: absolute; inset: auto clamp(24px, 5vw, 72px) 27px; display: flex; justify-content: space-between; align-items: center; padding-top: 16px; border-top: 1px solid #ffffff30; color: #fffc; font-size: 12px; }
+@media (max-width: 700px) { .site-nav { padding: 17px 20px; } .site-nav__links { display: none; } .nav-cta { padding: 11px 14px; font-size: 11px; } .product-hero__content { padding-bottom: 150px; } .product-hero__description { max-width: 340px; font-size: 13px; } .hero-footer { bottom: 20px; font-size: 10px; } .hero-footer a { font-size: 11px; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { scroll-behavior: auto !important; } }
+
+/* Concert streaming page */
+.site-brand { gap: 11px; font-size: 12px; letter-spacing: .12em; }
+.brand-mark { width: 32px; height: 32px; font-size: 19px; color: #ffc18c; border-color: #ffc18c88; }
+.site-brand__soft { color: #ffc18c; font-weight: 400; }
+.concert-hero { min-height: 760px; min-height: 100svh; background: radial-gradient(ellipse at 50% 78%, #6d304d 0%, #351929 38%, #170f18 78%); }
+.concert-hero::before { content: ''; position: absolute; inset: 0; z-index: -1; opacity: .28; background-image: linear-gradient(#ffffff0c 1px, transparent 1px), linear-gradient(90deg, #ffffff0c 1px, transparent 1px); background-size: 72px 72px; mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 75%, transparent); }
+.concert-hero .product-hero__content { position: relative; z-index: 3; padding-top: 150px; }
+.concert-hero .hero-eyebrow { color: #ffd4ae; }
+.concert-hero .product-hero h1 { width: min(100%, 1100px); font-size: clamp(3.4rem, 9vw, 8rem); letter-spacing: -.075em; text-wrap: balance; }
+.concert-hero .hero-title-light { color: #ffc18c; }
+.concert-hero .product-hero__description { max-width: 580px; font-size: clamp(15px, 1.5vw, 18px); }
+.concert-hero .pill-button { color: #26131c; background: #ffc18c; }
+.concert-hero .pill-button:hover { background: #ffdab8; }
+.concert-hero__orb { position: absolute; border-radius: 50%; filter: blur(1px); pointer-events: none; }
+.concert-hero__orb--one { top: 18%; left: 7%; width: clamp(110px, 18vw, 250px); aspect-ratio: 1; border: 1px solid #f4a66d38; box-shadow: 0 0 75px #d46c5b20 inset; }
+.concert-hero__orb--two { right: 8%; top: 24%; width: clamp(80px, 12vw, 170px); aspect-ratio: 1; background: radial-gradient(circle, #ffb97720, transparent 72%); }
+.concert-hero__stage { position: absolute; z-index: 0; left: 50%; bottom: -9%; width: min(920px, 110vw); height: min(530px, 65vw); min-height: 330px; transform: translateX(-50%); pointer-events: none; opacity: .72; }
+.concert-hero__halo { position: absolute; inset: 0 8% 0; border-radius: 50% 50% 0 0 / 85% 85% 0 0; background: radial-gradient(ellipse at 50% 75%, #f7885940, #a83e6730 35%, transparent 70%); filter: blur(18px); }
+.concert-hero__bars { position: absolute; inset: 24% 13% 8%; display: flex; align-items: center; justify-content: center; gap: clamp(8px, 2vw, 20px); mask-image: linear-gradient(to bottom, transparent, black 30%, black 70%, transparent); }
+.concert-hero__bars i { display: block; width: clamp(10px, 2.2vw, 24px); height: var(--bar-height); border-radius: 99px; background: linear-gradient(to bottom, #ffc18c, #e86c75 62%, #9c466f); box-shadow: 0 0 28px #ff9d7c52; opacity: .76; }
+.concert-hero__bars i:nth-child(1) { --bar-height: 27%; } .concert-hero__bars i:nth-child(2) { --bar-height: 42%; } .concert-hero__bars i:nth-child(3) { --bar-height: 62%; } .concert-hero__bars i:nth-child(4) { --bar-height: 37%; } .concert-hero__bars i:nth-child(5) { --bar-height: 88%; } .concert-hero__bars i:nth-child(6) { --bar-height: 51%; } .concert-hero__bars i:nth-child(7) { --bar-height: 72%; } .concert-hero__bars i:nth-child(8) { --bar-height: 35%; } .concert-hero__bars i:nth-child(9) { --bar-height: 58%; }
+.concert-hero__floor { position: absolute; left: 5%; right: 5%; bottom: 8%; height: 1px; background: linear-gradient(90deg, transparent, #ffb47d8c, transparent); box-shadow: 0 0 40px 10px #f46f7640; }
+.hero-footer { z-index: 4; }
+.pricing-content { background: #fffaf5; color: #28221f; }
+.section-shell { width: min(1180px, calc(100% - 48px)); margin-inline: auto; }
+.why-stream { padding-block: clamp(86px, 12vw, 150px); }
+.section-intro { max-width: 720px; }
+.section-eyebrow { color: #a6535c; }
+.section-intro h2, .pricing-copy h2, .details-heading h2 { margin-top: 19px; font-size: clamp(2.5rem, 6vw, 5rem); line-height: .99; letter-spacing: -.065em; font-weight: 600; }
+.section-lede { max-width: 640px; margin-top: 24px; color: #706761; font-size: 17px; line-height: 1.8; }
+.benefit-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 58px; }
+.benefit-card { min-height: 230px; padding: 27px; border: 1px solid #eadfd5; border-radius: 22px; background: #fffdfa; }
+.benefit-number { display: inline-grid; place-items: center; width: 37px; height: 37px; border-radius: 50%; background: #f6e3d8; color: #a6535c; font-size: 12px; font-weight: 600; }
+.benefit-card h3, .details-grid h3 { margin-top: 36px; font-size: 20px; line-height: 1.2; letter-spacing: -.025em; font-weight: 600; }
+.benefit-card p, .details-grid p { margin-top: 12px; color: #746c66; font-size: 14px; line-height: 1.7; }
+.pricing-section { position: relative; overflow: hidden; padding-block: clamp(80px, 11vw, 142px); background: #f2e9de; }
+.pricing-section::after { content: ''; position: absolute; width: 600px; height: 600px; right: -140px; top: -260px; border: 1px solid #cc796c30; border-radius: 50%; box-shadow: 0 0 0 55px #cc796c0b, 0 0 0 110px #cc796c08; }
+.pricing-layout { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr minmax(310px, 440px); align-items: center; gap: clamp(48px, 9vw, 130px); }
+.pricing-copy h2 { font-size: clamp(2.8rem, 5.8vw, 5rem); }
+.pricing-copy h2 span, .closing-section h2 span { color: #a6535c; }
+.text-link { display: inline-flex; gap: 12px; align-items: center; margin-top: 29px; color: #893e4b; font-size: 14px; font-weight: 600; text-decoration: none; border-bottom: 1px solid #893e4b65; padding-bottom: 7px; }
+.text-link:hover { color: #572a38; }
+.price-card { padding: 34px; border: 1px solid #ffffffa3; border-radius: 27px; background: #fffaf5; box-shadow: 0 24px 70px #68494c19; }
+.price-card__topline { display: flex; justify-content: space-between; color: #a6535c; font-size: 9px; font-weight: 700; letter-spacing: .16em; }
+.price-card__symbol { display: grid; place-items: center; width: 58px; height: 58px; margin-top: 30px; border-radius: 17px; background: #f4ded5; color: #9e4f57; font-size: 29px; }
+.price-card h3 { margin-top: 25px; font-size: 25px; line-height: 1.15; letter-spacing: -.04em; font-weight: 600; }
+.price-card__description { margin-top: 10px; color: #746c66; font-size: 14px; }
+.price { display: flex; align-items: flex-start; margin-top: 29px; color: #281d20; }
+.price > span { font-size: 68px; line-height: .95; font-weight: 600; letter-spacing: -.07em; }
+.price sup { margin: 5px 0 0 3px; font-size: 25px; font-weight: 600; }
+.price small { align-self: flex-end; margin: 0 0 7px 9px; color: #746c66; font-size: 13px; }
+.price-card__cta { display: flex; justify-content: space-between; align-items: center; margin-top: 28px; padding: 16px 19px; border-radius: 999px; background: #2d2025; color: #fffaf5; font-size: 13px; font-weight: 600; text-decoration: none; transition: background .2s, transform .2s; }
+.price-card__cta:hover { background: #8b414e; transform: translateY(-2px); }
+.price-card__note { margin-top: 15px; color: #867b73; font-size: 11px; line-height: 1.6; }
+.details-section { padding-block: clamp(80px, 10vw, 130px); }
+.details-heading { max-width: 700px; }
+.details-heading h2 { font-size: clamp(2.5rem, 5vw, 4.3rem); }
+.details-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 38px; margin-top: 53px; }
+.details-grid article { padding-top: 23px; border-top: 1px solid #ddd1c7; }
+.detail-icon { color: #a6535c; font-size: 11px; font-weight: 700; letter-spacing: .12em; }
+.details-grid h3 { margin-top: 22px; }
+.availability-note { margin-top: 38px; padding: 16px 20px; border-radius: 13px; background: #f3eee8; color: #746c66; font-size: 12px; line-height: 1.6; }
+.closing-section { position: relative; overflow: hidden; padding: clamp(80px, 12vw, 150px) 24px; text-align: center; background: linear-gradient(135deg, #24131d, #432333 55%, #27151e); color: #fffaf5; }
+.closing-section .eyebrow { color: #ffc18c; }
+.closing-section h2 { position: relative; z-index: 1; margin: 22px auto 0; max-width: 850px; font-size: clamp(2.8rem, 7vw, 6.3rem); line-height: .99; letter-spacing: -.07em; }
+.closing-section h2 span { color: #ffc18c; }
+.closing-section .pill-button { position: relative; z-index: 1; margin-top: 35px; padding: 15px 24px; background: #ffc18c; color: #26131c; }
+.closing-orbit { position: absolute; top: 50%; left: 50%; width: min(80vw, 740px); aspect-ratio: 1; border: 1px solid #ffd2ab18; border-radius: 50%; transform: translate(-50%, -50%); }
+.closing-orbit--two { width: min(65vw, 560px); border-color: #ffd2ab12; }
+.site-footer { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 27px clamp(24px, 5vw, 72px); background: #180f15; color: #fffaf5; }
+.site-footer p { color: #d0bfc0; font-size: 11px; }
+.footer-top { color: #ffc18c; font-size: 11px; text-decoration: none; white-space: nowrap; }
+@media (max-width: 760px) { .concert-hero { min-height: 740px; } .concert-hero__stage { width: 130vw; bottom: 0; height: 430px; } .concert-hero__orb--one { top: 21%; left: -13%; } .concert-hero__orb--two { right: -3%; top: 20%; } .benefit-grid, .details-grid { grid-template-columns: 1fr; } .benefit-card { min-height: 0; } .benefit-card h3 { margin-top: 24px; } .pricing-layout { grid-template-columns: 1fr; gap: 42px; } .price-card { max-width: 480px; width: 100%; } .details-grid { gap: 25px; } .site-footer { align-items: flex-start; flex-direction: column; gap: 16px; } }
+@media (max-width: 440px) { .site-nav { padding: 13px 14px; } .site-brand { font-size: 9px; gap: 7px; } .brand-mark { width: 28px; height: 28px; } .nav-cta { padding: 10px 12px; font-size: 10px; } .concert-hero .product-hero__content { padding: 120px 20px 150px; } .concert-hero .product-hero h1 { font-size: clamp(3rem, 12vw, 3.4rem); } .hero-footer { inset-inline: 18px; } .hero-footer span { max-width: 180px; } .section-shell { width: min(100% - 36px, 1180px); } .price-card { padding: 25px; } }
