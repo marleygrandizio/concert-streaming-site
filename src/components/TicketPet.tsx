@@ -18,10 +18,11 @@ export default function TicketPet() {
 
     const setup = async () => {
       if (!customElements.get('model-viewer')) {
-        await Promise.race([
-          customElements.whenDefined('model-viewer'),
-          new Promise((resolve) => window.setTimeout(resolve, 6000)),
-        ])
+        try {
+          await import(/* @vite-ignore */ `${base}vendor/model-viewer.min.js`)
+        } catch (error) {
+          console.error('Could not load the local 3D viewer bundle', error)
+        }
       }
       if (disposed) return
       if (!customElements.get('model-viewer')) {
@@ -40,6 +41,7 @@ export default function TicketPet() {
       viewer.setAttribute('min-camera-orbit', 'auto auto 2.8m')
       viewer.setAttribute('max-camera-orbit', 'auto auto 7m')
       viewer.setAttribute('field-of-view', '30deg')
+      viewer.setAttribute('touch-action', 'pan-y')
       viewer.setAttribute('shadow-intensity', '0.85')
       viewer.setAttribute('environment-image', 'neutral')
       viewer.setAttribute('exposure', '1')
