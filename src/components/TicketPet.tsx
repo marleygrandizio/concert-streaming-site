@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
+import type { PointerEvent } from 'react'
 
 const base = import.meta.env.BASE_URL
 
 export default function TicketPet() {
   const stageRef = useRef<HTMLDivElement>(null)
+  const petRef = useRef<HTMLElement>(null)
+  const dragRef = useRef<{ x: number; y: number; left: number; top: number } | null>(null)
   const [failed, setFailed] = useState(false)
   const [hello, setHello] = useState(true)
 
@@ -68,8 +71,32 @@ export default function TicketPet() {
     viewer.jumpCameraToGoal?.()
   }
 
+  const startDrag = (event: PointerEvent<HTMLElement>) => {
+    if ((event.target as HTMLElement).closest('button, model-viewer')) return
+    const pet = petRef.current
+    if (!pet) return
+    const rect = pet.getBoundingClientRect()
+    dragRef.current = { x: event.clientX, y: event.clientY, left: rect.left, top: rect.top }
+    pet.setPointerCapture(event.pointerId)
+  }
+
+  const moveDrag = (event: PointerEvent<HTMLElement>) => {
+    const drag = dragRef.current
+    const pet = petRef.current
+    if (!drag || !pet) return
+    const rect = pet.getBoundingClientRect()
+    const left = Math.max(8, Math.min(window.innerWidth - rect.width - 8, drag.left + event.clientX - drag.x))
+    const top = Math.max(8, Math.min(window.innerHeight - rect.height - 8, drag.top + event.clientY - drag.y))
+    pet.style.left = `${left}px`
+    pet.style.top = `${top}px`
+    pet.style.right = 'auto'
+    pet.style.bottom = 'auto'
+  }
+
+  const stopDrag = () => { dragRef.current = null }
+
   return (
-    <aside className="ticket-pet" aria-label="Interactive Lilac Ticket mascot">
+    <aside ref={petRef} className="ticket-pet" aria-label="Interactive Lilac Ticket mascot" onPointerDown={startDrag} onPointerMove={moveDrag} onPointerUp={stopDrag} onPointerCancel={stopDrag}>
       <div className="ticket-pet__topline">
         <span className="ticket-pet__status"><i /> YOUR TICKET BUDDY</span>
         <button className="ticket-pet__reset" type="button" onClick={resetView} aria-label="Reset mascot view" title="Reset view">↺</button>
