@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import PricingContent from './components/PricingContent'
+import TicketPet from './components/TicketPet'
 import './index.css'
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <Navbar />
       <Hero />
       <PricingContent />
+      <TicketPet />
     </div>
   )
 }

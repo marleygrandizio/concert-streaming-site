@@ -107,3 +107,22 @@
 .footer-top { color: #ffc18c; font-size: 11px; text-decoration: none; white-space: nowrap; }
 @media (max-width: 760px) { .concert-hero { min-height: 740px; } .concert-hero__stage { width: 130vw; bottom: 0; height: 430px; } .concert-hero__orb--one { top: 21%; left: -13%; } .concert-hero__orb--two { right: -3%; top: 20%; } .benefit-grid, .details-grid { grid-template-columns: 1fr; } .benefit-card { min-height: 0; } .benefit-card h3 { margin-top: 24px; } .pricing-layout { grid-template-columns: 1fr; gap: 42px; } .price-card { max-width: 480px; width: 100%; } .details-grid { gap: 25px; } .site-footer { align-items: flex-start; flex-direction: column; gap: 16px; } }
 @media (max-width: 440px) { .site-nav { padding: 13px 14px; } .site-brand { font-size: 9px; gap: 7px; } .brand-mark { width: 28px; height: 28px; } .nav-cta { padding: 10px 12px; font-size: 10px; } .concert-hero .product-hero__content { padding: 120px 20px 150px; } .concert-hero .product-hero h1 { font-size: clamp(3rem, 12vw, 3.4rem); } .hero-footer { inset-inline: 18px; } .hero-footer span { max-width: 180px; } .section-shell { width: min(100% - 36px, 1180px); } .price-card { padding: 25px; } }
+
+/* Lilac Ticket stays alongside the listener as a small interactive concert buddy. */
+.ticket-pet { position: fixed; z-index: 40; right: clamp(14px, 2.4vw, 32px); bottom: clamp(14px, 2.4vw, 28px); width: 206px; padding: 11px 12px 9px; overflow: visible; border: 1px solid #f3bd9a55; border-radius: 19px; color: #fffaf5; background: linear-gradient(145deg, #37202ddd, #1c141beF); box-shadow: 0 14px 46px #12090e70, inset 0 1px #ffffff18; backdrop-filter: blur(16px); }
+.ticket-pet__topline { display: flex; justify-content: space-between; align-items: center; min-height: 21px; }
+.ticket-pet__status { display: flex; align-items: center; gap: 7px; color: #f9c59e; font-size: 8px; font-weight: 700; letter-spacing: .14em; }
+.ticket-pet__status i { width: 6px; height: 6px; border-radius: 50%; background: #b8e4a1; box-shadow: 0 0 9px #b8e4a1; }
+.ticket-pet__reset { display: grid; place-items: center; width: 25px; height: 25px; border: 1px solid #ffffff2c; border-radius: 50%; color: #ffdbbd; background: #ffffff0c; font: inherit; font-size: 18px; cursor: pointer; transition: transform .2s, background .2s; }
+.ticket-pet__reset:hover { transform: rotate(-35deg); background: #ffffff20; }
+.ticket-pet__reset:focus-visible { outline: 2px solid #ffd0ac; outline-offset: 2px; }
+.ticket-pet__stage-wrap { position: relative; height: 128px; margin-top: 1px; }
+.ticket-pet__stage, .ticket-pet__stage model-viewer { display: block; width: 100%; height: 100%; }
+.ticket-pet__stage model-viewer { --poster-color: transparent; background: transparent; outline: none; }
+.ticket-pet__fallback { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
+.ticket-pet__bubble { position: absolute; top: 2px; right: 0; max-width: 154px; padding: 8px 10px; border: 1px solid #ffffff28; border-radius: 12px 12px 3px 12px; color: #35202c; background: #f8d8e9; box-shadow: 0 5px 18px #13091150; font-size: 9px; line-height: 1.35; animation: pet-hello-in .35s ease-out both; pointer-events: none; }
+.ticket-pet__hint { margin-top: 1px; color: #e8c8b9; text-align: center; font-size: 8px; letter-spacing: .03em; }
+@keyframes pet-hello-in { from { opacity: 0; transform: translateY(4px) scale(.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@media (max-width: 600px) { .ticket-pet { right: 10px; bottom: 10px; width: 150px; padding: 8px 9px 7px; border-radius: 15px; } .ticket-pet__stage-wrap { height: 96px; } .ticket-pet__status { font-size: 7px; } .ticket-pet__reset { width: 23px; height: 23px; } .ticket-pet__bubble { max-width: 123px; font-size: 8px; } .ticket-pet__hint { font-size: 7px; } }
+@media (max-width: 360px) { .ticket-pet { width: 132px; } .ticket-pet__stage-wrap { height: 82px; } }
+@media (prefers-reduced-motion: reduce) { .ticket-pet__bubble { animation: none; } .ticket-pet__reset { transition: none; } }
